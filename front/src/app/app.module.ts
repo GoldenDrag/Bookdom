@@ -15,12 +15,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 
 import 'hammerjs';
+import { PostComponent } from './post/post.component';
+// import { DataService } from './data.service';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PreviewComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    PostComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
