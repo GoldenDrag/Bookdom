@@ -1,0 +1,109 @@
+.features{
+    background-color: #FAF9FF;
+    width: 100%;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.features__name{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.features__name h1{
+    color: #3e3e3e;
+    font-size: 40px;
+    line-height: 30px;
+    font-family: "Open Sans" , sans-serif;
+    margin-bottom: 20px;
+}
+
+.features__name p{
+    color: #666666;
+    font-size: 16px;
+    line-height: 25px;
+    font-family: "Open Sans" , sans-serif;
+    margin-bottom: 50px;
+}
+
+.features__inner{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.features__card{
+    width: calc(33.3% - 30px);
+    padding: 20px 10px;
+    transition: 0.4s;
+    
+}
+
+.features__card h1{
+    color: #3e3e3e;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: center;
+
+}
+
+.features__card p{
+    color: #666666;
+    font-family: "Open Sans" , sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+    padding: 15px 50px;
+}
+
+.features__card:hover{
+    background-color: #FF666E;
+    border-radius: 5%;
+    transition: 0.4s;
+}
+
+.features__card:hover .features__icon {
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.features__card:hover h1{
+    color: #ffffff;
+}
+
+.features__card:hover p{
+    color: #ffffff;
+}
+
+.features__icon{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #FF666E;
+    margin:0 auto;
+}
+
+.fas.fa-user{
+    padding-top: 15px;
+}
+
+.fas.fa-allergies{
+    padding-top: 15px;
+}
+
+.fas.fa-ambulance{
+    padding-top: 15px;
+}
+
+.far.fa-angry{
+    padding-top: 15px;
+}
+
+.fab.fa-angular{
+    padding-top: 15px;
+}
+
+.fas.fa-air-freshener{
+    padding-top: 15px;
+}

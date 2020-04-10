@@ -1,0 +1,40 @@
+.main{
+    background:url("http://demo.wphash.com/moto/wp-content/uploads/2017/08/9.png");
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container__main{
+    width:1200px;
+    
+}
+
+.main__inner{
+    display:flex;
+    align-items: center;
+
+}
+
+.main__image{
+    display:flex;
+    width: 40%;
+}
+
+.main__image img{
+    width: 100%;
+}
+
+.main__content{
+    width: 60%;
+    width:100%;
+
+    
+}
+
+.main__content h1{
+    color: #fff;
+    font-size: 52px;
+    font-family: 'Open Sans' , sans-serif;
+    padding: 20px, 10px;
+}

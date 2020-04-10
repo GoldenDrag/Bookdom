@@ -1,0 +1,65 @@
+.work{
+    background: url(http://demo.wphash.com/moto/wp-content/uploads/2018/07/1.png);
+}
+
+.work{
+    background-color: #ffffff;
+    width:100%;
+    margin-top: 70px;
+   
+
+}
+.work__inner{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.work__image{
+    width: 50%;
+    padding-left: 130px;
+
+}
+.work__content{
+    width: 50%;
+    padding-right: 100px;
+}
+.work__list{
+    width: 71%;
+    display: flex;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+    justify-content: center;
+}
+.work__buttons{
+    padding:0 25px;
+    font-size: 20px;
+    line-height: 50px;
+    columns: #3e3e3e;;
+}
+.work__buttons.active{
+    background-color: #ff5f6d;
+    color: #fff;
+ }
+.work__buttons:hover{
+   background-color: #ff5f6d;
+   color: #fff;
+}
+.work__content h1{
+    columns: #33ee33;
+    font-size: 40px;
+    font-family: "Open Sans",sans-serif;
+    line-height: 52px;
+}
+.work__content p{
+    color: #777777;
+    font-family: "Open Sans",sans-serif;
+    font-size: 16px;
+    line-height: 10px 0px;
+}
+.work__list__text{
+    display: none;
+}
+.work__list__text.active{
+    display: block;
+}
+
