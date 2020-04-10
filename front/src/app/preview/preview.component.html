@@ -10,7 +10,7 @@
 
   <div fxFlex>
     <mat-grid-list cols="3" rowHeight="200px">
-      <mat-grid-tile *ngFor="let book of books" (click)='OnSelect(book)'>
+      <mat-grid-tile *ngFor="let book of books" (click)='OnSelect(book)' class="panel">
         <h1 matLine>{{ book.title }}</h1>
         <mat-grid-tile-footer>
           <p matLine>{{ book.author }}</p>

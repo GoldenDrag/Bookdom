@@ -7,6 +7,12 @@
   height: 200px;
 }
 
-.Post{
-  margin-left: 1320px;
+.panel {
+  border: 1px solid #ff5f6d;
+  border-radius: 10px;
+}
+
+.panel button {
+  background-color: #ff5f6d;
+  color: white;
 }
