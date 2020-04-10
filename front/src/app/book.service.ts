@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Book } from './book';
 import { BOOKS } from './mock-books';
 import { Observable, of } from 'rxjs';
-import { BookDetailComponent } from './book-detail/book-detail.component'
+import { BookDetailComponent } from './book-detail/book-detail.component';
+import { Author } from './author';
 
 @Injectable({
   providedIn: 'root'

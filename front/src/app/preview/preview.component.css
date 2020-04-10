@@ -16,7 +16,9 @@
 }
 
 .panel {
-  border: 1px solid #ff5f6d;
+  border: 1px solid #white;
+  color: white;
+  background-color: #ff4b39;
   border-radius: 10px;
 }
 

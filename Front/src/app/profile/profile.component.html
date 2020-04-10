@@ -1,1 +1,40 @@
-<p>profile works!</p>
+<div class="container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0">
+
+  <div fxFlex="40">
+    <div *ngIf="profile" class="profile" >
+      <mat-card class="panel">
+        <mat-card-header>
+          <mat-card-title>
+            <h3>My profile</h3>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>my favourits</button>
+          <button mat-button>my works</button>
+          <button mat-button onclick="goBack()">back</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex="40">
+    <strong>Commentaries on {{ selectedBook.title }}:</strong>
+    <hr>
+    <ul class="section">
+      <li *ngFor="let comment of selectedBook.comments">
+        <span>Author:</span> {{ comment.author }}; <span>Date: </span>{{ comment.date }}:
+        <p>{{ comment.comment }}</p>
+      </li>
+    </ul>
+  </div>
+
+</div>
