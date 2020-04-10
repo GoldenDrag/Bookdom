@@ -16,10 +16,10 @@ export class DetailComponent implements OnInit {
 
   books: Book[] = BOOKS;
   selectedBook: Book = this.books[0];
+
   OnSelect(book: Book): void {
     this.selectedBook = book;
   }
-
 
 
   ngOnInit(): void {

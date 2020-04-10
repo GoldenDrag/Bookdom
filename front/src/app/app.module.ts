@@ -18,6 +18,8 @@ import 'hammerjs';
 import { PostComponent } from './post/post.component';
 // import { DataService } from './data.service';
 import { DetailComponent } from './detail/detail.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { DetailComponent } from './detail/detail.component';
     PreviewComponent,
     BookDetailComponent,
     PostComponent,
-    DetailComponent
+    DetailComponent,
+    ProfileComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

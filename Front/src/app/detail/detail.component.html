@@ -28,7 +28,14 @@
   </div>
 
   <div fxFlex="40">
-    <p>Display the list of comments here</p>
+    <strong>Commentaries on {{ selectedBook.title }}:</strong>
+    <hr>
+    <ul class="section">
+      <li *ngFor="let comment of selectedBook.comments">
+        <span>Author:</span> {{ comment.author }}; <span>Date: </span>{{ comment.date }}:
+        <p>{{ comment.comment }}</p>
+      </li>
+    </ul>
   </div>
 
 </div>
