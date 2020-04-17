@@ -2,6 +2,23 @@ from django.db import models
 from datetime import date
 
 
+class ApiManager(models.Manager):
+    def with_counts(self):
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute("""
+                SELECT w.id, u.nick_name, w.title, w.last_upd
+                FROM api_book w, api_user u 
+                WHERE u.id = w.author_id
+                GROUP BY w.id, u.nick_name, w.title
+                ORDER BY w.last_upd DESC""")
+            result_list = []
+            for row in cursor.fetchall():
+                w = self.model(id=row[0], title=row[2], last_upd=row[3])
+                w.author_name=row[1]
+                result_list.append(w)
+        return result_list
+
 class User(models.Model):
     nick_name = models.CharField(unique=True, max_length=50)
     first_name = models.CharField(default="", max_length=20)
@@ -42,6 +59,7 @@ class Book(models.Model):
     genre = models.ForeignKey(Genre, default=DEFAULT_GENRE_ID, on_delete=models.CASCADE)
     description = models.TextField(default="")
     last_upd = models.DateField(auto_now=True, auto_now_add=False)
+    works = ApiManager()
 
     class Meta:
         verbose_name = "Book"
