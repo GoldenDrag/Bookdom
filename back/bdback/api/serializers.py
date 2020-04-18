@@ -33,7 +33,25 @@ class UserSerializer(serializers.Serializer):
         return instance
 
 
+class GenreSerializer(serializers.Serializer):
+    # name = models.CharField(default="", unique=True, max_length=50)
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(max_length=50)
+
+    def create(self, validated_data):
+        return Genre.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+
+
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ['id', 'title', 'author', 'genre', 'description', 'last_upd']
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'author', 'comment_text', 'publish_date', 'book']
