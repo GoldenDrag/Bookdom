@@ -1,5 +1,11 @@
 from django.db import models
-from datetime import date
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 
 class ApiManager(models.Manager):
@@ -19,10 +25,11 @@ class ApiManager(models.Manager):
                 result_list.append(w)
         return result_list
 
+
 class User(models.Model):
     nick_name = models.CharField(unique=True, max_length=50)
-    first_name = models.CharField(default="", max_length=20)
-    last_name = models.CharField(default="", max_length=20)
+    first_name = models.CharField(default="", blank=True, max_length=20)
+    last_name = models.CharField(default="", blank=True, max_length=20)
     birth_day = models.DateField(auto_now=False, auto_now_add=False)
     email = models.EmailField(default="", max_length=50)
     password = models.CharField(max_length=50)
@@ -35,8 +42,9 @@ class User(models.Model):
     def __str__(self):
         return self.nick_name
 
-    def get_absolute_url(self):
-        return reverse("User_detail", kwargs={"pk": self.pk})   
+    # def get_absolute_url(self):
+    #     return reverse("User_detail", kwargs={"pk": self.pk})
+
 
 class Genre(models.Model):
     name = models.CharField(default="", unique=True, max_length=50)
@@ -48,10 +56,12 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse("Genre_detail", kwargs={"pk": self.pk})
+    # def get_absolute_url(self):
+    #     return reverse("Genre_detail", kwargs={"pk": self.pk})
+
 
 DEFAULT_GENRE_ID = 1
+
 
 class Book(models.Model):
     title = models.CharField(unique=True, max_length=50)
@@ -68,8 +78,9 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse("Book_detail", kwargs={"pk": self.pk})
+    # def get_absolute_url(self):
+    #     return reverse("Book_detail", kwargs={"pk": self.pk})
+
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -84,5 +95,5 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment_text
 
-    def get_absolute_url(self):
-        return reverse("Comment_detail", kwargs={"pk": self.pk})
+    # def get_absolute_url(self):
+    #     return reverse("Comment_detail", kwargs={"pk": self.pk})
