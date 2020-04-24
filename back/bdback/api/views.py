@@ -28,9 +28,9 @@ class GenreListAPIView(APIView):
 
 
 class GenreDetailAPIView(APIView):
-    def get_object(self, id):
+    def get_object(self, genre_id):
         try:
-            return Genre.objects.get(id=id)
+            return Genre.objects.get(id=genre_id)
         except Genre.DoesNotExist as e:
             return Response({'error': str(e)})
 
