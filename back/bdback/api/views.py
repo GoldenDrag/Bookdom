@@ -27,20 +27,21 @@ class GenreListAPIView(APIView):
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class GenreDetailAPIView(APIView):
-    def get_object(self, id):
-        try:
-            return Genre.objects.get(id=id)
-        except Genre.DoesNotExist as e:
-            return Response({'error': str(e)})
+class GenreDetailAPIView(APIView):\
+
+    # def get_object(self, id):  # get genre by id
+    #     try:
+    #         return Genre.objects.get(id=id)
+    #     except Genre.DoesNotExist as e:
+    #         return Response({'error': str(e)})
 
     def get(self, request, genre_id):
-        genre = self.get_object(genre_id)
+        genre = Genre.objects.get(id=genre_id)  # self.get_object(genre_id)
         serializer = GenreSerializer(genre)
         return Response(serializer.data)
 
     def put(self, request, genre_id):
-        genre = self.get_object(genre_id)
+        genre = Genre.objects.get(id=genre_id)  # self.get_object(genre_id)
         serializer = GenreSerializer(instance=genre, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -59,7 +60,6 @@ def user_list(request):
     if request.method == 'GET':
         users = User.objects.all()
         serializer = UserSerializer(users, many=True)
-
         return Response(serializer.data)
 
     elif request.method == 'POST':
@@ -73,16 +73,18 @@ def user_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def user_detail(request, user_id):
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist as e:
-        return Response({'error': str(e)})
+    # try:
+    #     user = User.objects.get(id=user_id)
+    # except User.DoesNotExist as e:
+    #     return Response({'error': str(e)})
 
     if request.method == 'GET':
+        user = User.objects.get(id=user_id)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
+        user = User.objects.get(id=user_id)
         serializer = UserSerializer(instance=user, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -90,6 +92,7 @@ def user_detail(request, user_id):
         return Response({'error': serializer.errors})
 
     elif request.method == 'DELETE':
+        user = User.objects.get(id=user_id)
         user.delete()
 
         return Response({'deleted': True})
