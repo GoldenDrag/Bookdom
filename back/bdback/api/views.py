@@ -2,18 +2,18 @@ import _json
 from django.shortcuts import render
 from django.http.response import JsonResponse
 from rest_framework import status
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from .models import User, Book, Genre
 from django.db import models
 from .serializers import UserSerializer, GenreSerializer, BookSerializer
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.request import Request
 from rest_framework.response import Response
 
 
 class GenreListAPIView(APIView):
-
     def get(self, request):
         genres = Genre.objects.all()
         serializer = GenreSerializer(genres, many=True)
@@ -57,6 +57,7 @@ class GenreDetailAPIView(APIView):
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([AllowAny, ])
 def user_list(request):
     if request.method == 'GET':
         users = User.objects.all()
@@ -74,6 +75,7 @@ def user_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated, ])
 def user_detail(request, user_id):
     try:
         user = User.objects.get(id=user_id)
