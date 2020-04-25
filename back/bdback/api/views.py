@@ -8,6 +8,8 @@ from django.db import models
 from .serializers import UserSerializer, GenreSerializer, BookSerializer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from rest_framework.request import Request
+from rest_framework.response import Response
 
 
 class GenreListAPIView(APIView):

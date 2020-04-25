@@ -43,6 +43,8 @@ class GenreSerializer(serializers.Serializer):
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)
+        return instance
+
 
 
 class BookSerializer(serializers.ModelSerializer):
