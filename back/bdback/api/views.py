@@ -8,6 +8,8 @@ from django.db import models
 from .serializers import UserSerializer, GenreSerializer, BookSerializer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
+from rest_framework.request import Request
+from rest_framework.response import Response
 
 
 class GenreListAPIView(APIView):
@@ -28,9 +30,9 @@ class GenreListAPIView(APIView):
 
 
 class GenreDetailAPIView(APIView):
-    def get_object(self, genre_id):
+    def get_object(self, id):
         try:
-            return Genre.objects.get(id=genre_id)
+            return Genre.objects.get(id=id)
         except Genre.DoesNotExist as e:
             return Response({'error': str(e)})
 
