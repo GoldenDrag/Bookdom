@@ -46,7 +46,6 @@ class GenreSerializer(serializers.Serializer):
         return instance
 
 
-
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book

@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import GenreListAPIView, GenreDetailAPIView
 # from .views import GenreListAPIView, GenreDetailAPIView, user_list, user_detail
 
 from .views import *
@@ -12,10 +13,13 @@ urlpatterns = [
     path('genres/', GenreListAPIView.as_view()),
     path('genres/<int:genre_id>/', GenreDetailAPIView.as_view()),
 
-    path('users/', user_list),
-    path('users/<int:user_id>/', user_detail),
+    path('users/', views.user_list),
+    path('users/<int:user_id>/', views.user_detail),
+
+    path('comments/', views.comment_list),
+#     path('users/', user_list),
+#     path('users/<int:user_id>/', user_detail),
 
     path('books/', get_books),
     path('books/<int:book_id>/', BookAPIView),
-
 ]
