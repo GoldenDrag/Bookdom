@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.response import Response
 from .models import User, Book, Genre
 from django.db import models
 from .serializers import UserSerializer, GenreSerializer, BookSerializer
@@ -51,7 +50,7 @@ class GenreDetailAPIView(APIView):\
         return Response({'error': serializer.errors})
 
     def delete(self, request, genre_id):
-        genre = self.get_object(genre_id)
+        genre = Genre.objects.get(id=genre_id) # self.get_object(genre_id)
         genre.delete()
 
         return Response({'deleted': True})
@@ -100,3 +99,40 @@ def user_detail(request, user_id):
         user.delete()
 
         return Response({'deleted': True})
+
+class BookAPIView(APIView):
+    def get(self, request, book_id):
+        book = Book.objects.get(id=book_id)
+        serializer = BookSerializer(book)
+        Response(serializer.data)
+
+    def put(self, request, book_id):
+        book = Book.objects.get(id=book_id)
+        serializer = BookSerializer(instance=book, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response({'error': serializer.errors})
+
+    def delete(self, request, book_id):
+        book = Genre.objects.get(id=book_id)
+        book.delete()
+
+        return Response({'deleted': True})
+
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny, ])
+def get_books(request):
+    if request.mehtod == 'GET':
+        books = Book.objects.all()
+        serializer = BookSerializer(books, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = BookSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'error': serializer.errors},
+                        status=status.HTTP_500_INTERNAL_SERVER_ERROR)
