@@ -16,6 +16,8 @@ urlpatterns = [
     path('users/', views.user_list),
     path('users/<int:user_id>/', views.user_detail),
 
+    path('comments/', views.comment_list),
+
 
 
 

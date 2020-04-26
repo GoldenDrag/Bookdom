@@ -4,13 +4,28 @@ from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from .models import User, Book, Genre
+from .models import User, Book, Genre, Comment
 from django.db import models
-from .serializers import UserSerializer, GenreSerializer, BookSerializer
+from .serializers import UserSerializer, GenreSerializer, BookSerializer, CommentSerializer
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.request import Request
 from rest_framework.response import Response
+
+
+@api_view(['GET', 'POST'])
+def comment_list(request):
+    if request.method == 'GET':
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'error': serializer.errors}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class GenreListAPIView(APIView):
@@ -97,3 +112,5 @@ def user_detail(request, user_id):
         user.delete()
 
         return Response({'deleted': True})
+
+
