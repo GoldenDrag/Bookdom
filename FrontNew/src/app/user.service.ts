@@ -9,7 +9,7 @@ import { User } from './book-list/IUser';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-    url = "http://localhost:8000/api/users/" //api for backend
+    url = "http://127.0.0.1:8000/" //api for backend
     httpHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
