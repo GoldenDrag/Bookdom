@@ -21,7 +21,7 @@ class ApiManager(models.Manager):
             result_list = []
             for row in cursor.fetchall():
                 w = self.model(id=row[0], title=row[2], last_upd=row[3])
-                w.author_name=row[1]
+                w.author_name = row[1]
                 result_list.append(w)
         return result_list
 

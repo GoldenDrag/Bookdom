@@ -1,6 +1,5 @@
 from django.urls import path
-
-from .views import GenreListAPIView, GenreDetailAPIView
+from .views import GenreListAPIView, GenreDetailAPIView, user_list, user_detail
 
 from . import views
 
@@ -15,8 +14,4 @@ urlpatterns = [
 
     path('users/', views.user_list),
     path('users/<int:user_id>/', views.user_detail),
-
-
-
-
 ]
