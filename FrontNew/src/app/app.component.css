@@ -1,0 +1,13 @@
+.books{
+    height: 100px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto auto auto auto ;
+    grid-gap: 2rem;
+    padding: 0 0rem;
+    background:red;
+}
+a{
+    font-size: 30px;
+    color: white;
+}

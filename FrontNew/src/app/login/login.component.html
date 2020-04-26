@@ -1,6 +1,8 @@
+<div class="login">
 <h2>Login to System with redaction</h2>
 
-<input type="email" name="email" [(ngModel)]="userModel.email">
-<input type="password" name="password"[(ngModel)]="userModel.password">
+<input type="email" name="email" placeholder="Email" [(ngModel)]="userModel.email">
+<input type="password" name="password" placeholder="Password"[(ngModel)]="userModel.password">
 
 <button (click)="onLogin">Sign in</button>
+</div>

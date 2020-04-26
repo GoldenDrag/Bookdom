@@ -1,0 +1,5 @@
+.manager{
+    display: grid;
+    padding: 2rem;
+    grid-gap: 2rem;
+}
