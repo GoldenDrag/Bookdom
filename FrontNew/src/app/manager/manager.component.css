@@ -1,5 +1,5 @@
 .manager{
     display: grid;
-    padding: 1rem;
-    grid-gap: 1rem;
+    padding: 2rem;
+    grid-gap: 2rem;
 }
