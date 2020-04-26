@@ -1,7 +1,6 @@
 .registration{
-    display: grid;
+    display: inline-block;
     padding: 1rem;
-    grid-template-rows: auto auto auto auto ;
     grid-gap: 1rem;
 
 }

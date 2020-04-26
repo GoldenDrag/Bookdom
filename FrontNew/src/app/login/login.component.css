@@ -1,6 +1,7 @@
 .login{
+    display: inline-block;
     padding: 1rem;
-    display: grid;
-    grid-template-rows: auto auto auto auto ;
     grid-gap: 1rem;
+
+    
 }
