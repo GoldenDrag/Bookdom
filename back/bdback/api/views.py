@@ -124,8 +124,8 @@ class BookAPIView(APIView):
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny, ])
 def get_books(request):
-    if request.mehtod == 'GET':
-        books = Book.objects.all()
+    if request.method == 'GET':
+        books = Book.works.all()
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
 

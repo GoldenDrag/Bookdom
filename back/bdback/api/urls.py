@@ -15,6 +15,7 @@ urlpatterns = [
     path('users/', user_list),
     path('users/<int:user_id>/', user_detail),
 
+    path('books/', get_books),
     path('books/<int:book_id>/', BookAPIView),
 
 ]
