@@ -99,8 +99,11 @@ def user_detail(request, user_id):
         user.delete()
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         return Response({'deleted': True})
 =======
+=======
+>>>>>>> Stashed changes
         return status.HTTP_200_OK
 
 
